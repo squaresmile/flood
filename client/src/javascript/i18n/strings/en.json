@@ -212,6 +212,7 @@
   "settings.ui.language": "Language",
   "settings.ui.misc": "Miscellaneous",
   "settings.ui.page.title.speed": "Display upload and download speed in page title",
+  "settings.ui.sidebar.private.trackers.only": "Only show private trackers on the sidebar",
   "settings.ui.locale": "Locale",
   "settings.ui.tag.selector.mode": "Tag Selector Preference",
   "settings.ui.tag.selector.mode.multi": "Multi Selection",

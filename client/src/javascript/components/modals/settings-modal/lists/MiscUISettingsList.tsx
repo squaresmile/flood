@@ -13,6 +13,9 @@ const MiscUISettingsList: FC<MiscUISettingsListProps> = ({onSettingsChange}: Mis
   const changedUIPageTitleSpeedEnabledRef = useRef<FloodSettings['UIPageTitleSpeedEnabled']>(
     SettingStore.floodSettings.UIPageTitleSpeedEnabled,
   );
+  const changedUISidebarPrivateTrackersOnlyRef = useRef<FloodSettings['UISidebarPrivateTrackersOnly']>(
+    SettingStore.floodSettings.UISidebarPrivateTrackersOnly,
+  );
 
   return (
     <ToggleList
@@ -23,6 +26,14 @@ const MiscUISettingsList: FC<MiscUISettingsListProps> = ({onSettingsChange}: Mis
           onClick: () => {
             changedUIPageTitleSpeedEnabledRef.current = !changedUIPageTitleSpeedEnabledRef.current;
             onSettingsChange({UIPageTitleSpeedEnabled: changedUIPageTitleSpeedEnabledRef.current});
+          },
+        },
+        {
+          label: 'settings.ui.sidebar.private.trackers.only',
+          defaultChecked: changedUISidebarPrivateTrackersOnlyRef.current,
+          onClick: () => {
+            changedUISidebarPrivateTrackersOnlyRef.current = !changedUISidebarPrivateTrackersOnlyRef.current;
+            onSettingsChange({UISidebarPrivateTrackersOnly: changedUISidebarPrivateTrackersOnlyRef.current});
           },
         },
       ]}

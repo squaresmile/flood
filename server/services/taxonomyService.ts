@@ -100,8 +100,15 @@ class TaxonomyService extends BaseService<TaxonomyServiceEvents> {
     this.incrementStatusCounts(torrentProperties.status);
     this.incrementTagCounts(torrentProperties.tags);
     this.incrementTagSizes(torrentProperties.tags, torrentProperties.sizeBytes);
-    this.incrementTrackerCounts(torrentProperties.trackerURIs);
-    this.incrementTrackerSizes(torrentProperties.trackerURIs, torrentProperties.sizeBytes);
+
+    if (this.services !== undefined) {
+      this.services.settingService.get('UISidebarPrivateTrackersOnly').then(({UISidebarPrivateTrackersOnly}) => {
+        if (UISidebarPrivateTrackersOnly !== true || torrentProperties.isPrivate) {
+          this.incrementTrackerCounts(torrentProperties.trackerURIs);
+          this.incrementTrackerSizes(torrentProperties.trackerURIs, torrentProperties.sizeBytes);
+        }
+      });
+    }
   };
 
   incrementStatusCounts(statuses: Array<TorrentStatus>) {
